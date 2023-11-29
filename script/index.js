@@ -1,18 +1,27 @@
-let arrayOutput = document.getElementById('arrayOutput');
- let calButton = document.getElementById('calButton');
+let array1 = [1,4,7,11,111]
+let array2 =  [1, [5], [6, [[7]]],[8,9]]
 
- function uniqueNumbers() {
-     let array1 = [1, 4, 11, 111];
-     let array2 = [1, 4, 11, 7];
+let cArray =[]
+function flat(array){
+     return array.flat(10)
+}
 
-     // using 'set' to get unique values from arrays
-     let uniqueArray1 = [...new Set(array1)];
-     let uniqueArray2 = [...new Set(array2)];
+function compare(a,b){
+    let first = flat(a)
+    let second = flat(b)
+    let poppedValues = []
+    for (i of first){
+        let x = first.shift()
+        first.includes(x) || finalArray.includes(y) || poppedValues.includes(y) ? poppedValues.push(x): finalArray.push(x);
+        first.push(x)
+    }
 
-     // using spread operators to combine arrays
-     let result = [...uniqueArray1, ...uniqueArray2];
+    for(i of second){
+        let y = second.shift()
+        second.includes(y) || finalArray.includes(y) || poppedValues.includes(y) ? poppedValues.push(y): finalArray.push(y)
+        second.push(y)
+    }
+    console.log(finalArray.sort((a,b)=> a-b));
+}
+    compare(array1,array2)
 
-    //adding comma and space to answers
-     arrayOutput.value = result.join(', '); 
- }
- calButton.addEventListener('click', uniqueNumbers);
