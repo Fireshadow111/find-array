@@ -11,16 +11,16 @@ function flatten(array) {
 }
 
 function uniqueNum(a, b) {
-    let first = flatten(a);
-    let second = flatten(b);
+    let array1 = flatten(a);
+    let array2 = flatten(b);
 
     // Combine and comparing arrays
-    let combinedArray = first.concat(second);
+    let fusedArray = array1.concat(array2);
 
-    // Loops through combined array and to find unique numbers
-    for (let value of combinedArray) {
+    // Loops through the combined array and to find unique numbers
+    for (let value of fusedArray) {
         if (
-            combinedArray.indexOf(value) === combinedArray.lastIndexOf(value) &&
+            fusedArray.indexOf(value) === fusedArray.lastIndexOf(value) &&
             !uniqueNumbers.includes(value)
         ) {
             uniqueNumbers.push(value);
