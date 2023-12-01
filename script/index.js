@@ -1,16 +1,33 @@
-let arrayOutput = document.getElementById('arrayOutput');
- let calButton = document.getElementById('calButton');
+// Arrays
+let array1 = [1, 4, 7, 11, 111];
+let array2 = [1, [3], [5, [[9]]], [8, 14]];
 
- function uniqueNumbers() {
-     let array1 = [1, 4, 11, 111];
-     let array2 = [1, 4, 11, 7];
+// Empty array to store unique numebers
+let uniqueNumbers = [];
 
-     // using set to get unique values from array
-     let uniqueArray1 = [...new Set(array1)];
-     let uniqueArray2 = [...new Set(array2)];
+// Function to remove nested arrays
+function flatten(array) {
+    return array.flat(20);
+}
 
-     // combining arrays
-     let result = [...uniqueArray1, ...uniqueArray2];
-     arrayOutput.value = result.join(', '); 
- }
- calButton.addEventListener('click', uniqueNumbers);
+function uniqueNum(a, b) {
+    let first = flatten(a);
+    let second = flatten(b);
+
+    // Combine and comparing arrays
+    let combinedArray = first.concat(second);
+
+    // Loops through combined array and to find unique numbers
+    for (let value of combinedArray) {
+        if (
+            combinedArray.indexOf(value) === combinedArray.lastIndexOf(value) &&
+            !uniqueNumbers.includes(value)
+        ) {
+            uniqueNumbers.push(value);
+        }
+    }
+    // Sorting the unique numbers
+    let result = uniqueNumbers.sort((a, b) => a - b);
+    document.getElementById('arrayOutput').value = result.join(', ');
+}
+uniqueNum(array1, array2);
