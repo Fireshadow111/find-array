@@ -1,6 +1,7 @@
 // Arrays
 let array1 = [1, 4, 7, 11, 111];
 let array2 = [1, [3], [5, [[9]]], [8, 14]];
+let calButton = document.getElementById('calButton');
 
 // Empty array to store unique numebers
 let uniqueNumbers = [];
@@ -26,8 +27,12 @@ function uniqueNum(a, b) {
             uniqueNumbers.push(value);
         }
     }
+    
     // Sorting the unique numbers
     let result = uniqueNumbers.sort((a, b) => a - b);
     document.getElementById('arrayOutput').value = result.join(', ');
 }
-uniqueNum(array1, array2);
+
+calButton.addEventListener('click', function(){
+    uniqueNum(array1, array2)
+})
